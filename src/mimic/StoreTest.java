@@ -17,7 +17,6 @@ class StoreTest {
 		
 		Store store = new Store();
 		
-		
 		store.learnResponse("apple", "fruit");
 		store.getResponse("apple");
 		
@@ -35,7 +34,7 @@ class StoreTest {
 	
 	
 	/*
-	@Test
+	@Test2
 	void test_getResponse() {
 		Store store = new Store();
 		
