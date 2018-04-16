@@ -9,6 +9,19 @@ class StoreTest {
 	
 	/*
 	 * ID 1
+	 * Tests that learnResponse is saved and getResponse is returning something.
+	 * Expected return is not null.
+	 */
+	@Test
+	void test_learnAndGetNotMatchingResponse() {
+		Store store = new Store();
+		store.learnResponse("apple", "apple");
+		assertNotEquals(store.getResponse("apple"), null);
+	}
+	
+	
+	/*
+	 * ID 2
 	 * Tests learnResponse function is working by giving "apple" and "fruit" as parameters and calling for getResponse.
 	 * Expected return should be "fruit"
 	 */
@@ -21,7 +34,7 @@ class StoreTest {
 
 	
 	/*
-	 * ID 2
+	 * ID 3
 	 * Tests getResponse function is giving correct return when being asked for an unsaved entry.
 	 * Expected return should be "null"
 	 */
@@ -34,7 +47,7 @@ class StoreTest {
 	
 	
 	/*
-	 * ID 3
+	 * ID 4
 	 * Tests unlearnAll function is working by first learning different responses, ask for learned responses, unlearn the responses and then ask again.
 	 * Expected return should be "null"
 	 */
@@ -52,20 +65,4 @@ class StoreTest {
 		assertEquals(store.getResponse("banana"), null);
 		assertEquals(store.getResponse("pear"), null);
 	}
-	
-	
-	/*
-	 * ID 4
-	 * Tests that learnResponse and getResponse functions is not returning a wrong value.
-	 * Expected return is not null.
-	 */
-	@Test
-	void test_learnAndGetNotMatchingResponse() {
-		Store store = new Store();
-		store.learnResponse("apple", "apple");
-		assertNotEquals(store.getResponse("apple"), null);
-	}
-	
-	
-	
 }
