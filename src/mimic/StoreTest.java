@@ -13,43 +13,35 @@ class StoreTest {
 	*/
 	
 	@Test
-	void test_response() {
-		
+	void test_learnAndGetResponse() {
 		Store store = new Store();
-		
-		
 		store.learnResponse("apple", "fruit");
 		store.getResponse("apple");
-		
 		assertEquals(store.getResponse("apple"), "fruit");
 	}
 
 	
 	@Test
-	void test_response_ifIsEmpty() {
+	void test_getResponseWithoutPrevRecord() {
 		Store store = new Store();
-		
 		store.getResponse("banana");
-		
-		assertEquals(store.getResponse("banana"),null);
-		//assertEquals
+		assertEquals(store.getResponse("banana"), null);
 	}
 	
-	
-	/*
-	@Test
-	void test_getResponse() {
-		Store store = new Store();
-		
-		assertEquals(store.getResponse(x), x);
-	}
 	
 	@Test
 	void test_unlearnAll() {
 		Store store = new Store();
+		store.learnResponse("apple", "red fruit");
+		store.learnResponse("banana", "yellow fruit");
+		store.learnResponse("pear", "green fruit");
+		assertEquals(store.getResponse("apple"),"red fruit");
+		assertEquals(store.getResponse("banana"), "yellow fruit");
+		assertEquals(store.getResponse("pear"), "green fruit");
+		store.unlearnAll();
+		assertEquals(store.getResponse("apple"), null);
+		assertEquals(store.getResponse("banana"), null);
+		assertEquals(store.getResponse("pear"), null);
 		
-		assertEquals(store.unlearnAll(), x);
 	}
-	*/
-
 }
