@@ -18,12 +18,13 @@ class StoreTest {
 		Store store = new Store();
 		
 		
-		store.learnResponse(String request, String response);
-		store.getResponse(String request);
+		store.learnResponse("apple", "fruit");
+		store.getResponse("apple");
 		
-		assertEquals(store.learnResponse(x, x), x);
+		assertEquals(store.getResponse("apple"), "fruit");
 	}
-		
+	
+	/*
 	@Test
 	void test_getResponse() {
 		Store store = new Store();
@@ -37,5 +38,6 @@ class StoreTest {
 		
 		assertEquals(store.unlearnAll(), x);
 	}
+	*/
 
 }
