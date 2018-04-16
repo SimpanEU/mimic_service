@@ -16,18 +16,21 @@ class StoreTest {
 	void test_learnResponse() {
 		
 		Store store = new Store();
+		
 		assertEquals(store.learnResponse(x, x), x);
 	}
 		
 	@Test
 	void test_getResponse() {
 		Store store = new Store();
+		
 		assertEquals(store.getResponse(x), x);
 	}
 	
 	@Test
 	void test_unlearnAll() {
 		Store store = new Store();
+		
 		assertEquals(store.unlearnAll(), x);
 	}
 
