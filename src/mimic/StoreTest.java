@@ -1,6 +1,7 @@
 package mimic;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.jupiter.api.Test;
 
@@ -16,18 +17,15 @@ class StoreTest {
 	void test_learnAndGetResponse() {
 		Store store = new Store();
 		store.learnResponse("apple", "fruit");
-		store.getResponse("apple");
 		assertEquals(store.getResponse("apple"), "fruit");
 	}
 
-	
 	@Test
 	void test_getResponseWithoutPrevRecord() {
 		Store store = new Store();
-		store.getResponse("banana");
 		assertEquals(store.getResponse("banana"), null);
+		assertEquals(store.getResponse(""), null);
 	}
-	
 	
 	@Test
 	void test_unlearnAll() {
@@ -42,6 +40,15 @@ class StoreTest {
 		assertEquals(store.getResponse("apple"), null);
 		assertEquals(store.getResponse("banana"), null);
 		assertEquals(store.getResponse("pear"), null);
-		
 	}
+	
+	@Test
+	void test_learnAndGetNotMatchingResponse() {
+		Store store = new Store();
+		store.learnResponse("apple", "apple");
+		assertNotEquals(store.getResponse("apple"), "banana");
+	}
+	
+	
+	
 }
