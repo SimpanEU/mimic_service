@@ -13,9 +13,13 @@ class StoreTest {
 	*/
 	
 	@Test
-	void test_learnResponse() {
+	void test_response() {
 		
 		Store store = new Store();
+		
+		
+		store.learnResponse(String request, String response);
+		store.getResponse(String request);
 		
 		assertEquals(store.learnResponse(x, x), x);
 	}
