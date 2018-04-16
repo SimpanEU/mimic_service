@@ -29,7 +29,7 @@ class StoreTest {
 		
 		store.getResponse("banana");
 		
-		//assertEquals(store.getResponse("banana"),null);
+		assertEquals(store.getResponse("banana"),null);
 	}
 	
 	
