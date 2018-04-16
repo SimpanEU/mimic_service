@@ -17,6 +17,7 @@ class StoreTest {
 		
 		Store store = new Store();
 		
+		
 		store.learnResponse("apple", "fruit");
 		store.getResponse("apple");
 		
@@ -26,15 +27,14 @@ class StoreTest {
 	void test_response_ifIsEmpty() {
 		Store store = new Store();
 		
-		store.learnResponse("banana", "");
-		store.getResponse(null);
+		store.getResponse("banana");
 		
-		assertEquals(store.getResponse("banana"), null);
+		//assertEquals(store.getResponse("banana"),null);
 	}
 	
 	
 	/*
-	@Test2
+	@Test
 	void test_getResponse() {
 		Store store = new Store();
 		
