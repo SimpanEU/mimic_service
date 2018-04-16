@@ -23,6 +23,8 @@ class StoreTest {
 		
 		assertEquals(store.getResponse("apple"), "fruit");
 	}
+
+	
 	@Test
 	void test_response_ifIsEmpty() {
 		Store store = new Store();
