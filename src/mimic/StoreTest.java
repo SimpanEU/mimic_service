@@ -13,7 +13,7 @@ class StoreTest {
 	 * Expected return is not null.
 	 */
 	@Test
-	void test_learnAndGetNotMatchingResponse() {
+	void test_getResponse_isReturning() {
 		Store store = new Store();
 		store.learnResponse("apple", "apple");
 		assertNotEquals(store.getResponse("apple"), null);
@@ -26,7 +26,7 @@ class StoreTest {
 	 * Expected return should be "fruit"
 	 */
 	@Test
-	void test_learnAndGetResponse() {
+	void test_getResponse_isCorrReturn() {
 		Store store = new Store();
 		store.learnResponse("apple", "fruit");
 		assertEquals(store.getResponse("apple"), "fruit");
@@ -39,7 +39,7 @@ class StoreTest {
 	 * Expected return should be "null"
 	 */
 	@Test
-	void test_getResponseWithoutPrevRecord() {
+	void test_getResponse_WithoutAnySavedData() {
 		Store store = new Store();
 		assertEquals(store.getResponse("banana"), null);
 		assertEquals(store.getResponse(""), null);
@@ -64,5 +64,20 @@ class StoreTest {
 		assertEquals(store.getResponse("apple"), null);
 		assertEquals(store.getResponse("banana"), null);
 		assertEquals(store.getResponse("pear"), null);
+	}
+	
+	
+	/*
+	 * ID 5
+	 * Tests that learnResponse is returning the right parameter after several learnings.
+	 * Expected return is "c".
+	 */
+	@Test
+	void test_learnResponse_multipleLearns() {
+		Store store = new Store();
+		store.learnResponse("apple", "a");
+		store.learnResponse("apple", "b");
+		store.learnResponse("apple", "c");
+		assertEquals(store.getResponse("apple"), "c");
 	}
 }
