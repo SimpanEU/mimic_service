@@ -48,6 +48,21 @@ class StoreTest {
 	
 	/*
 	 * ID 4
+	 * Tests that learnResponse is returning the right parameter after several learnings.
+	 * Expected return is "c".
+	 */
+	@Test
+	void test_learnResponse_multipleLearns() {
+		Store store = new Store();
+		store.learnResponse("apple", "a");
+		store.learnResponse("apple", "b");
+		store.learnResponse("apple", "c");
+		assertEquals(store.getResponse("apple"), "c");
+	}
+	
+	
+	/*
+	 * ID 5
 	 * Tests unlearnAll function is working by first learning different responses, ask for learned responses, unlearn the responses and then ask again.
 	 * Expected return should be "null"
 	 */
@@ -64,20 +79,5 @@ class StoreTest {
 		assertEquals(store.getResponse("apple"), null);
 		assertEquals(store.getResponse("banana"), null);
 		assertEquals(store.getResponse("pear"), null);
-	}
-	
-	
-	/*
-	 * ID 5
-	 * Tests that learnResponse is returning the right parameter after several learnings.
-	 * Expected return is "c".
-	 */
-	@Test
-	void test_learnResponse_multipleLearns() {
-		Store store = new Store();
-		store.learnResponse("apple", "a");
-		store.learnResponse("apple", "b");
-		store.learnResponse("apple", "c");
-		assertEquals(store.getResponse("apple"), "c");
 	}
 }
