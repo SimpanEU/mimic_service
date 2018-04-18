@@ -1,4 +1,4 @@
-package cucumber;
+package info.cukes.cucumber_junit;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
