@@ -29,11 +29,11 @@ public class MimicStepDef {
 	}
 
 	
-	@When("^I learn a reponse$")
-	public void i_learn_a_reponse() throws Throwable {
+	@When("^I learn a request$")
+	public void i_learn_a_request() throws Throwable {
 	}
-	@When("^I request a reponse$")
-	public void i_request_a_reponse() throws Throwable {
+	@When("^I learn a response$")
+	public void i_learn_a_response() throws Throwable {
 	}
 	@Then("^mimic\\.jar is responding with correct response$")
 	public void mimic_jar_is_responding_with_correct_response() throws Throwable {

@@ -3,8 +3,8 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
 
   Scenario: Learning and requesting responses
     Given mimic.jar is running
-    When I learn a reponse
-    And I request a reponse
+    When I learn a request
+    And I learn a response
     Then mimic.jar is responding with correct response
 
   Scenario: Unlearning a previous request/response
@@ -16,3 +16,19 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     Given mimic.jar is running
     When I use the mimic.jar shutdown function
     Then mimic.jar is not running
+    
+    
+    
+    
+    
+# Scenario Outline: Learning and requesting responses
+#  Given mimic.jar is running
+#  When I learn a <request>
+#	 And I learn a <response>
+#  Then mimic.jar is responding with correct <response>
+#
+#  Examples:
+#    | request | response |
+#    |  apple  |  fruit   |
+#    |  volvo  |  car     |
+#    |  1010   |  0101    |
