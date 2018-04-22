@@ -1,14 +1,24 @@
 package info.cukes.cucumber_junit;
 
+import static org.junit.Assert.assertEquals;
+
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import info.cukes.calculator_junit.HttpServiceCaller;
 
 public class MimicStepDef {
+	
+	private final static String host = "http://localhost:8080/";
+	private HttpServiceCaller service=new HttpServiceCaller();
+	private String response;
+	
 
 	@Given("^mimic\\.jar is running$")
 	public void mimic_jar_is_running() throws Throwable {
-	    // Write code here that turns the phrase above into concrete actions
+		String request=host+"unlearn";
+		String response=service.executeGetRequest(request);
+		assertEquals(response, "OK");
 	}
 
 	@When("^I learn a reponse$")
