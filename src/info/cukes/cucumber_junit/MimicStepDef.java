@@ -12,6 +12,7 @@ public class MimicStepDef {
 	private final static String host = "http://localhost:8080/";
 	private HttpServiceCaller service=new HttpServiceCaller();
 	private String response;
+	private String placeholder;
 	
 
 	@Given("^mimic\\.jar is running$")
@@ -31,21 +32,18 @@ public class MimicStepDef {
 	
 	@When("^I learn a response$")
 	public void i_learn_a_response() throws Throwable {
-		
 		String request = host + "LearnNextResponse?text=fruit" ;
 		String response = service.executeGetRequest(request);
 	}
 	
 	@When("^I learn a request$")
 	public void i_learn_a_request() throws Throwable {
-		
 		String request = host + "apple" ;
 		String response = service.executeGetRequest(request);
 	}
 	
 	@Then("^mimic\\.jar is responding with correct response$")
 	public void mimic_jar_is_responding_with_correct_response() throws Throwable {
-		
 		String request = host + "apple" ;
 		String response = service.executeGetRequest(request);
 		assertEquals(response, "fruit");		
@@ -88,5 +86,52 @@ public class MimicStepDef {
 		String cmd = "java -jar C://Users//" + user + "//mimic.jar";
 		Runtime.getRuntime().exec(cmd); */
 	}
+	@When("^I learn a new response$")
+	public void i_learn_a_new_response() throws Throwable {
+		String request = host + "LearnNextResponse?text=fruity" ;
+		String response = service.executeGetRequest(request);
+	}
 
+	@Then("^mimic\\.jar is responding with correct new response$")
+	public void mimic_jar_is_responding_with_correct_new_response() throws Throwable {
+		String request = host + "apple" ;
+		String response = service.executeGetRequest(request);
+		assertEquals(response, "fruity");
+	}
+	
+	@When("^I learn a \"([^\"]*)\" and a \"([^\"]*)\"$")
+	public void i_learn_a_and_a(String arg1, String arg2) throws Throwable {
+		String request = host + "LearnNextResponse?text=" + arg2 ;
+		String response = service.executeGetRequest(request);
+		
+		String request_again = host + arg1;
+		String response_again = service.executeGetRequest(request_again);
+		this.placeholder = arg2;
+	}
+	
+	@Then("^mimic\\.jar is responding with correct \"([^\"]*)\"$")
+	public void mimic_jar_is_responding_with_correct(String arg1) throws Throwable {
+		String request = host + arg1 ;
+		String response = service.executeGetRequest(request);
+		assertEquals(response, this.placeholder);
+	}
+
+	@When("^I learn a (\\d+) and a (\\d+)$")
+	public void i_learn_a_and_a(int arg1, int arg2) throws Throwable {
+		String request = host + "LearnNextResponse?text=" + arg2 ;
+		String response = service.executeGetRequest(request);
+		
+		String request_again = host + arg1;
+		String response_again = service.executeGetRequest(request_again);
+		this.placeholder = Integer.toString(arg2);
+	}
+
+	@Then("^mimic\\.jar is responding with correct (\\d+)$")
+	public void mimic_jar_is_responding_with_correct(int arg1) throws Throwable {
+		String request = host + arg1 ;
+		String response = service.executeGetRequest(request);
+		assertEquals(response, this.placeholder);
+	}
+	
+	
 }

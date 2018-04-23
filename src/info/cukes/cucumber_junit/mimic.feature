@@ -17,18 +17,24 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     When I use the mimic.jar shutdown function
     Then mimic.jar is not running
     
+   Scenario: Correct an incorrect response
+    Given mimic.jar is running
+    When I learn a response
+    And I learn a request
+    And I learn a new response
+    And I learn a request
+    Then mimic.jar is responding with correct new response
     
     
-    
-    
-# Scenario Outline: Learning and requesting responses
-#  Given mimic.jar is running
-#  When I learn a <request>
-#	 And I learn a <response>
-#  Then mimic.jar is responding with correct <response>
-#
-#  Examples:
-#    | request | response |
-#    |  apple  |  fruit   |
-#    |  volvo  |  car     |
-#    |  1010   |  0101    |
+ Scenario Outline: Learning and requesting responses
+  Given mimic.jar is running
+  When I learn a <response> and a <request>
+  Then mimic.jar is responding with correct <response>
+
+  Examples:
+    |  request  |  response |
+    |  "banana" |  "yellow" |
+    |  "volvo"  |  "car"    |
+    |  "green"  |  "green"  |
+    |  1010     |  0101     |
+    |  0000     |  0000     |
