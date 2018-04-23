@@ -38,11 +38,18 @@ public class MimicStepDef {
 	@Then("^mimic\\.jar is responding with correct response$")
 	public void mimic_jar_is_responding_with_correct_response() throws Throwable {
 	}
+	
 	@When("^I unlearn the previous request/response using the \"([^\"]*)\" command$")
 	public void i_unlearn_the_previous_request_response_using_the_command(String arg1) throws Throwable {
+		String request=host+"unlearn";
+		String response=service.executeGetRequest(request);
+		assertEquals(response, "OK");
 	}
 	@Then("^Previous request/response is removed$")
 	public void previous_request_response_is_removed() throws Throwable {
+		String request=host+"apple";
+		String response=service.executeGetRequest(request);
+		assertNotEquals(response, "fruit");
 	}
 
 	
