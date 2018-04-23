@@ -3,8 +3,8 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
 
   Scenario: Learning and requesting responses
     Given mimic.jar is running
-    When I learn a request
-    And I learn a response
+    When I learn a response
+    And I learn a request
     Then mimic.jar is responding with correct response
 
   Scenario: Unlearning a previous request/response

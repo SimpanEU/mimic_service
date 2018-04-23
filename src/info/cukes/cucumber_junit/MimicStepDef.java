@@ -29,14 +29,26 @@ public class MimicStepDef {
 	}
 
 	
-	@When("^I learn a request$")
-	public void i_learn_a_request() throws Throwable {
-	}
 	@When("^I learn a response$")
 	public void i_learn_a_response() throws Throwable {
+		
+		String request = host + "LearnNextResponse?text=fruit" ;
+		String response = service.executeGetRequest(request);
 	}
+	
+	@When("^I learn a request$")
+	public void i_learn_a_request() throws Throwable {
+		
+		String request = host + "apple" ;
+		String response = service.executeGetRequest(request);
+	}
+	
 	@Then("^mimic\\.jar is responding with correct response$")
 	public void mimic_jar_is_responding_with_correct_response() throws Throwable {
+		
+		String request = host + "apple" ;
+		String response = service.executeGetRequest(request);
+		assertEquals(response, "fruit");		
 	}
 	
 	@When("^I unlearn the previous request/response using the \"([^\"]*)\" command$")
@@ -45,6 +57,7 @@ public class MimicStepDef {
 		String response=service.executeGetRequest(request);
 		assertEquals(response, "OK");
 	}
+	
 	@Then("^Previous request/response is removed$")
 	public void previous_request_response_is_removed() throws Throwable {
 		String request=host+"apple";
@@ -52,8 +65,6 @@ public class MimicStepDef {
 		assertNotEquals(response, "fruit");
 	}
 
-	
-	
 	@When("^I use the mimic\\.jar shutdown function$")
 	public void i_use_the_mimic_jar_shutdown_function() throws Throwable {
 		
