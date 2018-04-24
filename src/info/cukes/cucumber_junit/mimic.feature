@@ -29,6 +29,8 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     Then mimic.jar is responding with correct new response
     
     
+    
+    
   @Test_Case_ID_10
  	Scenario Outline: Learning and requesting responses
  	  Given mimic.jar is running
@@ -42,3 +44,12 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     |  "green"  |  "green"  |
     |  1010     |  0101     |
     |  0000     |  0000     |
+    
+    
+    
+    
+  Scenario: Learning and requesting videos
+    Given mimic.jar is running
+    When I learn a video response
+    And I learn a video request
+    Then mimic.jar is responding with correct video response
