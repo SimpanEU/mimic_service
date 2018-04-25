@@ -46,8 +46,7 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     |  0000     |  0000     |
     
     
-    
-    
+  @Test_Case_ID_11 
   Scenario: Learning and requesting videos
     Given mimic.jar is running
     When I learn a video response
