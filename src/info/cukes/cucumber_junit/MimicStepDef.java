@@ -137,7 +137,6 @@ public class MimicStepDef {
 	
 	
 	
-	
 	@When("^I learn a video response$")
 	public void i_learn_a_video_response() throws Throwable {
 		String request = host + "LearnNextResponse?text=<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/IcrbM1l_BoI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>&mime=text/html";		
