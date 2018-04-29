@@ -11,7 +11,7 @@ Simply download and double-click the mimic.jar file. Yo may also start Mimic fro
 
 java -jar mimic.jar
 
-Communicate with mimic using a browser or any http application.
+Communicate with Mimic using a browser or any http application.
 
 Mimic uses port 8080, by default. Use the command below to start Mimic on port 80:
 
@@ -30,26 +30,46 @@ Mimic will respond with a form for filling out the response. Mimic will auto det
 Trigger the same request again and Mimic will respond with your previously defined response.
 
 
+Use the command Relearn to specify a new response to the last request:
+
+http://localhost:8080/relearn
+
+
 Unlearn the previous request/response using the "unlearn" command:
 
 http://localhost:8080/unlearn
 
+or unlearn all requests using:
+
+http://localhost:8080/unlearnAll
+
 
 Define a response before triggering a request to prevent the form from appearing:
 
-http://localhost:8080/LearnNextResponse?text=Hello
+http://localhost:8080/learnNextResponse?text=Hello
 
 or by specifying the mime type:
 
-http://localhost:8080/LearnNextResponse?text=<value>1</value>&mime=application/xml
+http://localhost:8080/learnNextResponse?text=<value>1</value>&mime=application/xml
 
 
-Close Mimic by using the command:
+Reset the simulated application state (to repeat a sequence again) using:
 
-http://localhost:8080/KillMimic
+http://localhost:8080/resetState
+
+
+Close Mimic and save the learned responses by using the command:
+
+http://localhost:8080/killMimic
 
 
 Release Notes:
+
+Version 0.2:
+- Learns a sequence of responses to the same request.
+- New commands: relearn, unlearnAll and resetState
+- Saves the learned responses to the "brain" file when the killMimic command is executed.
+- Loads learned responses from the "brain" file if it exists.
 
 Version 0.1:
 - Learns responses to requests with or without using the form.
