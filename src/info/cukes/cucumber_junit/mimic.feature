@@ -52,3 +52,26 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     When I learn a video response
     And I learn a video request
     Then mimic.jar is responding with correct video response
+  
+  
+  ## unlearnAll FUNCTION- UserStory6 ##
+  
+   @Test_Case_ID_12
+   Scenario: unlearn all the responses
+   Given mimic.jar is running
+   When  I unlearn the previous responses using the "unlearnAll" command
+   Then  All previous responses are moved
+   
+   @Test_Case_ID_13
+   Scenario Outline: Re-run all the request
+   Given mimic.jar is running
+   When I run the previous <request> again
+   Then Previous <response> are removed
+
+  Examples:
+    |  request  |  response |
+    |  "banana" |  "yellow" |
+    |  "volvo"  |  "car"    |
+    |  "green"  |  "green"  |
+    |  1010     |  0101     |
+    |  0000     |  0000     |
