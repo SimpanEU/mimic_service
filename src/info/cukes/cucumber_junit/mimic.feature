@@ -55,12 +55,11 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
   
   
   ## unlearnAll FUNCTION- UserStory6 ##
-  
    @Test_Case_ID_12
    Scenario: unlearn all the responses
    Given mimic.jar is running
    When  I unlearn the previous responses using the "unlearnAll" command
-   Then  All previous responses are moved
+   Then  All previous responses are removed
    
    @Test_Case_ID_13
    Scenario Outline: Re-run all the request
@@ -73,5 +72,5 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
     |  "banana" |  "yellow" |
     |  "volvo"  |  "car"    |
     |  "green"  |  "green"  |
-    |  1010     |  0101     |
+    |  1010     |  101      |
     |  0000     |  0000     |

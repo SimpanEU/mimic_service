@@ -154,55 +154,53 @@ public class MimicStepDef {
 		assertEquals(response, "<iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/IcrbM1l_BoI\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>");
 	}
 	
-	//2018-4-30 MONDAY-UserStory 6
-		//Testing if unlearnAll function can remove all the responses
+//2018-4-30 MONDAY-UserStory 6
+//Testing if unlearnAll function can remove all the responses
 		
-		@When("^I unlearn the previous responses using the \"([^\"]*)\" command$")
-		public void i_unlearn_the_previous_responses_using_the_command(String arg1) throws Throwable {
-			String request=host+"unlearnAll";
-			String response=service.executeGetRequest(request);
-			assertEquals(response, "OK");
-		}
+	@When("^I unlearn the previous responses using the \"([^\"]*)\" command$")
+	public void i_unlearn_the_previous_responses_using_the_command(String arg1) throws Throwable {
+		String request=host+"unlearnAll";
+		String response=service.executeGetRequest(request);
+		assertEquals(response, "OK");
+	}
 
-		@Then("^All previous responses are moved$")
-		public void all_previous_responses_are_moved() throws Throwable {
-			String request=host+"banana";
-			String response=service.executeGetRequest(request);
-			assertNotEquals(response, "yellow");
-		}
-		
-		//Testing to re-run all the requests to see if all the responses are moved. 
-		
-		@When("^I run the previous \"([^\"]*)\" again$")
-		 
-		public void i_run_the_previous_again(String arg1) throws Throwable {
-			String request = host + arg1;
-			String response = service.executeGetRequest(request);
-		}
+	@Then("^All previous responses are removed$")
+	public void all_previous_responses_are_removed() throws Throwable {
+		String request=host+"banana";
+		String response=service.executeGetRequest(request);
+		assertNotEquals(response, "0000");
+	}
 
-		@When("^I run the previous (\\d+) again$")
-		public void i_run_the_previous_again(int arg1) throws Throwable {
-			String request = host + arg1;
-			String response = service.executeGetRequest(request);
-			this.placeholder = Integer.toString(arg1);
-		}
-		
-		
-		@Then("^Previous \"([^\"]*)\" are removed$")
-		public void previous_are_removed(String arg1) throws Throwable {
-			String request=host+ arg1;
-			String response=service.executeGetRequest(request);
-			assertNotEquals(response, "yellow");
-		}
+	//Testing to re-run all the requests to see if all the responses are removed. 
 
-		@Then("^Previous (\\d+) are removed$")
-		public void previous_are_removed(int arg1) throws Throwable {
-			String request=host+ arg1;
-			String response=service.executeGetRequest(request);
-			this.response = Integer.toString(arg1);
-			assertNotEquals(response, "0101");
-		}
-		
+	@When("^I run the previous \"([^\"]*)\" again$")
+	public void i_run_the_previous_again(String arg1) throws Throwable {
+		String request = host + arg1;
+		String response = service.executeGetRequest(request);
+		this.response = response;
+
+	}
+
+	@When("^I run the previous (\\d+) again$")
+	public void i_run_the_previous_again(int arg1) throws Throwable {
+		String request = host + arg1;
+		String response = service.executeGetRequest(request);
+		this.response = response;
+
+	}
+
+
+	@Then("^Previous \"([^\"]*)\" are removed$")
+	public void previous_are_removed(String arg1) throws Throwable {
+		String response= arg1;
+		assertNotEquals(response, this.response);
+
+	}
+
+	@Then("^Previous (\\d+) are removed$")
+	public void previous_are_removed(int arg1) throws Throwable {
+		String response = Integer.toString(arg1);
+		assertNotEquals(response, this.response);
 	}
 
 }
