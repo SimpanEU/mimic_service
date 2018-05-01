@@ -18,7 +18,7 @@ public class MimicStepDef {
 	@Given("^mimic\\.jar is running$")
 	public void mimic_jar_is_running() throws Throwable {
 		
-		if(!(service.executeGetRequest("http://localhost:8080/resetState").equals("OK"))) {
+		if(!(service.executeGetRequest("http://localhost:8080/error").equals("Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>"))) {
 			// Launches mimic.jar from your C:/Users/<username> folder.
 			String user = System.getProperty("user.name");
 			String cmd = "java -jar C://Users//" + user + "//mimic.jar";
@@ -84,7 +84,8 @@ public class MimicStepDef {
 		String request=host+"KillMimic";
 		String response=service.executeGetRequest(request);
 		Thread.sleep(1000);
-		assertNotEquals(service.executeGetRequest(request), "OK");
+		response=service.executeGetRequest(request);
+		assertNotEquals(response, "OK");
 		
 		/*
 		// Re-launches the mimic.jar after its being shutdown, requires you to have the mimic.jar in your C:/Users/<username> folder.
@@ -209,6 +210,22 @@ public class MimicStepDef {
 	public void previous_are_removed(int arg1) throws Throwable {
 		String response = Integer.toString(arg1);
 		assertNotEquals(response, this.response);
+	}
+	
+	
+	
+	@When("^mimic\\.jar is launched$")
+	public void mimic_jar_is_launched() throws Throwable {
+		String user = System.getProperty("user.name");
+		String cmd = "java -jar C://Users//" + user + "//mimic.jar";
+		Runtime.getRuntime().exec(cmd);
+	}
+
+	@Then("^\"([^\"]*)\" is returning \"([^\"]*)\"$")
+	public void is_returning(String arg1, String arg2) throws Throwable {
+		String request = host + arg1 ;
+		String response = service.executeGetRequest(request);
+		assertEquals(response, arg2);
 	}
 
 }
