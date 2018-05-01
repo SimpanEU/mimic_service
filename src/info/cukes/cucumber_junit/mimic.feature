@@ -1,4 +1,4 @@
-Feature: Learn requests, get responses and unlearn requests in the mimic service
+	Feature: Learn requests, get responses and unlearn requests in the mimic service
 
   @Test_Case_ID_6
   Scenario: Learning and requesting responses

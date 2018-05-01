@@ -18,15 +18,20 @@ public class MimicStepDef {
 	@Given("^mimic\\.jar is running$")
 	public void mimic_jar_is_running() throws Throwable {
 		
-		// Launches mimic.jar from your C:/Users/<username> folder.
-		String user = System.getProperty("user.name");
-		String cmd = "java -jar C://Users//" + user + "//mimic.jar";
-		Runtime.getRuntime().exec(cmd);
+		if(!(service.executeGetRequest("http://localhost:8080/resetState").equals("OK"))) {
+			// Launches mimic.jar from your C:/Users/<username> folder.
+			String user = System.getProperty("user.name");
+			String cmd = "java -jar C://Users//" + user + "//mimic.jar";
+			Runtime.getRuntime().exec(cmd);
+		}
 		
+		service.executeGetRequest("http://localhost:8080/unlearnAll");
+		/*
 		// Tests if LearnNextResponse method returns "OK".
 		String request=host+"LearnNextResponse?text=TestIfRunning";
 		String response=service.executeGetRequest(request);
 		assertEquals(response, "OK");
+		*/
 	}
 
 	
@@ -39,7 +44,7 @@ public class MimicStepDef {
 	@When("^I learn a request$")
 	public void i_learn_a_request() throws Throwable {
 		String request = host + "apple" ;
-		String response = service.executeGetRequest(request);
+		service.executeGetRequest(request);
 	}
 	
 	@Then("^mimic\\.jar is responding with correct response$")
@@ -78,6 +83,7 @@ public class MimicStepDef {
 		// Calls for KillMimic method once again, this time we do not expect any "OK" as the service should already been shutdown.
 		String request=host+"KillMimic";
 		String response=service.executeGetRequest(request);
+		Thread.sleep(1000);
 		assertNotEquals(service.executeGetRequest(request), "OK");
 		
 		/*
@@ -88,6 +94,8 @@ public class MimicStepDef {
 	}
 	@When("^I learn a new response$")
 	public void i_learn_a_new_response() throws Throwable {
+		service.executeGetRequest(host + "apple");
+		service.executeGetRequest(host + "relearn");
 		String request = host + "LearnNextResponse?text=fruity" ;
 		String response = service.executeGetRequest(request);
 	}
