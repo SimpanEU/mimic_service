@@ -78,7 +78,7 @@ Feature: mimic
     Then mimic.jar is not running
     
     
-    @Test_Case_ID_17
+    @Test_Case_ID_18
     Scenario: unlearn with states
     Given mimic.jar is running
     And <request> has several learned states
