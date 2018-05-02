@@ -26,7 +26,6 @@ public class MimicStepDef {
 		}
 		
 		// service.executeGetRequest("http://localhost:8080/unlearnAll");
-		
 		/*
 		// Tests if LearnNextResponse method returns "OK".
 		String request=host+"LearnNextResponse?text=TestIfRunning";
@@ -261,6 +260,48 @@ public class MimicStepDef {
 		request = service.executeGetRequest("http://localhost:8080/" +arg1);
 		assertEquals(request, "state3");
 		
+	}
+	
+	
+	
+	
+	
+	@Given("^<request> has several learned states$")
+	public void request_has_several_learned_states() throws Throwable {
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state1");
+		service.executeGetRequest("http://localhost:8080/testy");
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state2");
+		service.executeGetRequest("http://localhost:8080/testy");
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state3");
+		service.executeGetRequest("http://localhost:8080/testy");
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state4");
+		service.executeGetRequest("http://localhost:8080/testy");
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state5");
+		service.executeGetRequest("http://localhost:8080/testy");
+	}
+
+	@When("^I use unlearn twice$")
+	public void i_use_unlearn_twice() throws Throwable {
+		System.out.println("Request test has response:");
+		System.out.println(service.executeGetRequest("http://localhost:8080/testy"));
+		service.executeGetRequest("http://localhost:8080/unlearn");
+		System.out.println("Request test has response:");
+		System.out.println(service.executeGetRequest("http://localhost:8080/testy"));
+		service.executeGetRequest("http://localhost:8080/unlearn");
+		System.out.println("Request test has response:");
+		System.out.println(service.executeGetRequest("http://localhost:8080/testy"));
+		service.executeGetRequest("http://localhost:8080/unlearn");
+		System.out.println("Request test has response:");
+		System.out.println(service.executeGetRequest("http://localhost:8080/testy"));
+		System.out.println("Request test has response:");
+		service.executeGetRequest("http://localhost:8080/unlearn");
+		System.out.println(service.executeGetRequest("http://localhost:8080/testy"));
+	}
+
+	@Then("^<request> returns correct state response$")
+	public void request_returns_correct_state_response() throws Throwable {
+	    String response = service.executeGetRequest("http://localhost:8080/testy");
+	    assertEquals(response, "state1");
 	}
 
 }

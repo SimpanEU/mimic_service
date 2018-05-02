@@ -76,3 +76,11 @@ Feature: mimic
     Given mimic.jar is running
     When I use the mimic.jar shutdown function
     Then mimic.jar is not running
+    
+    
+    @Test_Case_ID_17
+    Scenario: unlearn with states
+    Given mimic.jar is running
+    And <request> has several learned states
+    When I use unlearn twice
+    Then <request> returns correct state response
