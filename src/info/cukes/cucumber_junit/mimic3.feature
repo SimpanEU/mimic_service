@@ -1,4 +1,4 @@
-Feature: Sprint 3
+Feature: mimic
 
   # User Story 6: Tests unlearnAll
   @Test_Case_ID_12
@@ -70,3 +70,10 @@ Feature: Sprint 3
       | "banana" | "yellow" |
       | "volvo"  | "car"    |
       | "green"  | "green"  |
+      
+      
+        @Test_Case_ID_8
+  Scenario: Shutting down current running service
+    Given mimic.jar is running
+    When I use the mimic.jar shutdown function
+    Then mimic.jar is not running

@@ -1,4 +1,4 @@
-Feature: Learn requests, get responses and unlearn requests in the mimic service
+Feature: mimic
 
   @Test_Case_ID_6
   Scenario: Learning and requesting responses
@@ -39,20 +39,8 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
       | "banana" | "yellow" |
       | "volvo"  | "car"    |
       | "green"  | "green"  |
-      |     1010 |     0101 |
+      |     1111 |     0000 |
       |     0000 |     0000 |
-
-  @Test_Case_ID_14
-  Scenario Outline: Restart mimic and see if entries has been saved
-    Given mimic.jar is not running
-    When mimic.jar is launched
-    Then <request> is returning <response>
-
-    Examples: 
-      | request  | response |
-      | "banana" | "yellow" |
-      | "volvo"  | "car"    |
-      | "green"  | "green"  |
 
   @Test_Case_ID_11
   Scenario: Learning and requesting videos
@@ -81,3 +69,15 @@ Feature: Learn requests, get responses and unlearn requests in the mimic service
       | "green"  | "green"  |
       |     1010 |      101 |
       |     0000 |     0000 |
+      
+#  @Test_Case_ID_14
+#  Scenario Outline: Restart mimic and see if entries has been saved
+#    Given mimic.jar is not running
+#    When mimic.jar is launched
+#    Then <request> is returning <response>
+#
+#    Examples: 
+#      | request  | response |
+#      | "banana" | "yellow" |
+#      | "volvo"  | "car"    |
+#      | "green"  | "green"  |
