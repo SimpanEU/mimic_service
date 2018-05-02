@@ -17,21 +17,16 @@ public class MimicStepDef {
 
 	@Given("^mimic\\.jar is running$")
 	public void mimic_jar_is_running() throws Throwable {
+		
 		if(!(service.executeGetRequest("http://localhost:8080/error").equals("Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>"))) {
+			
 			// Launches mimic.jar from your C:/Users/<username> folder.
 			System.out.println("Service offline. Starting mimic.jar ...");
 			String user = System.getProperty("user.name");
-			String cmd = "java -jar C://Users//" + user + "//mimic.jar";
+			String cmd = "java -jar C://Users//" + user + "//eclipse-workspace//cucumber-junit//mimic.jar";
 			Runtime.getRuntime().exec(cmd);
 		}
 		
-		// service.executeGetRequest("http://localhost:8080/unlearnAll");
-		/*
-		// Tests if LearnNextResponse method returns "OK".
-		String request=host+"LearnNextResponse?text=TestIfRunning";
-		String response=service.executeGetRequest(request);
-		assertEquals(response, "OK"); java -jar C://Users//Simp//mimic.jar
-		*/
 	}
 
 	
@@ -215,9 +210,14 @@ public class MimicStepDef {
 	
 	@When("^mimic\\.jar is launched$")
 	public void mimic_jar_is_launched() throws Throwable {
-		String user = System.getProperty("user.name");
-		String cmd = "java -jar C://Users//" + user + "//mimic.jar";
-		Runtime.getRuntime().exec(cmd);
+		if(!(service.executeGetRequest("http://localhost:8080/error").equals("Paste or type json, xml, html or text response to learn and press Learn<br><br><form action=\"learn\" method=\"post\"><textarea name='text' rows='30' cols='150'></textarea><br><br><input type=\"submit\" id='learn' value=\"Learn\"></form>"))) {
+			
+			// Launches mimic.jar from your C:/Users/<username>/eclipse-workspace/cucumber-junit/ folder.
+			System.out.println("Service offline. Starting mimic.jar ...");
+			String user = System.getProperty("user.name");
+			String cmd = "java -jar C://Users//" + user + "//eclipse-workspace//cucumber-junit//mimic.jar";
+			Runtime.getRuntime().exec(cmd);
+		}
 	}
 
 	@Then("^\"([^\"]*)\" is returning \"([^\"]*)\"$")

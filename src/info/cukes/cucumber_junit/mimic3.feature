@@ -59,17 +59,18 @@ Feature: mimic
       | "test"  | "state2" |
       | "test"  | "state3" |
 
-  #  # Tests functionality of saving data
-  #  @Test_Case_ID_17
-  #  Scenario Outline: Restart mimic and see if entries has been saved
-  #    Given mimic.jar is not running
-  #    When mimic.jar is launched
-  #    Then <request> is returning <response>
-  #    Examples:
-  #     | request  | response |
-  #     | "banana" | "yellow" |
-  #     | "volvo"  | "car"    |
-  #     | "green"  | "green"  |
+    # Tests functionality of saving data
+    @Test_Case_ID_17
+    Scenario Outline: Restart mimic and see if entries has been saved
+      Given I learn a <response> and a <request>
+      And mimic.jar is not running
+      When mimic.jar is launched
+      Then mimic.jar is responding with correct <response>
+       Examples:
+       | request  | response |
+       | "banana" | "yellow" |
+       | "volvo"  | "car"    |
+       | "green"  | "green"  |
   
   @Test_Case_ID_8
   Scenario: Shutting down current running service
