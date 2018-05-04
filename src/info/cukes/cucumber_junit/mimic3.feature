@@ -76,6 +76,6 @@ Feature: Testing mimic service sprint 3
   Scenario: Unlearn with states
     Given mimic.jar is running
     And unlearnAll is called
-    When Request "test" has "5" learned responses
-    And I use unlearn "3" times
+    When Request "test" has "15" learned responses
+    And I use unlearn "x" times
     Then Request "test" returns correct state response
