@@ -1,4 +1,4 @@
-Feature: mimic
+Feature: Testing mimic service sprint 3
 
   # User Story 6: Tests unlearnAll
   @Test_Case_ID_12
@@ -59,29 +59,23 @@ Feature: mimic
       | "test"  | "state2" |
       | "test"  | "state3" |
 
-    # Tests functionality of saving data
-    @Test_Case_ID_17
-    Scenario Outline: Restart mimic and see if entries has been saved
-      Given I learn a <response> and a <request>
-      And mimic.jar is not running
-      When mimic.jar is launched
-      Then mimic.jar is responding with correct <response>
-       Examples:
-       | request  | response |
-       | "banana" | "yellow" |
-       | "volvo"  | "car"    |
-       | "green"  | "green"  |
-  
-  @Test_Case_ID_8
-  Scenario: Shutting down current running service
+  # Tests functionality of saving data
+  @Test_Case_ID_17
+  Scenario Outline: Restart mimic and see if entries has been saved
+    Given I learn a <response> and a <request>
+    And mimic.jar is not running
+    When mimic.jar is launched
+    Then mimic.jar is responding with correct <response>
+
+    Examples: 
+      | request  | response |
+      | "banana" | "yellow" |
+      | "volvo"  | "car"    |
+
+  @Test_Case_ID_18
+  Scenario: Unlearn with states
     Given mimic.jar is running
-    When I use the mimic.jar shutdown function
-    Then mimic.jar is not running
-    
-    
-    @Test_Case_ID_18
-    Scenario: unlearn with states
-    Given mimic.jar is running
-    And <request> has several learned states
-    When I use unlearn twice
-    Then <request> returns correct state response
+    And unlearnAll is called
+    When Request "test" has "5" learned responses
+    And I use unlearn "3" times
+    Then Request "test" returns correct state response

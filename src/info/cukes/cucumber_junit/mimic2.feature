@@ -1,4 +1,4 @@
-Feature: mimic
+Feature: Testing mimic service sprint 2
 
   @Test_Case_ID_6
   Scenario: Learning and requesting responses
@@ -39,8 +39,8 @@ Feature: mimic
       | "banana" | "yellow" |
       | "volvo"  | "car"    |
       | "green"  | "green"  |
-      |     1111 |     0000 |
-      |     0000 |     0000 |
+      | 1111     | 0000     |
+      | 0000     | 0000     |
 
   @Test_Case_ID_11
   Scenario: Learning and requesting videos
@@ -48,36 +48,3 @@ Feature: mimic
     When I learn a video response
     And I learn a video request
     Then mimic.jar is responding with correct video response
-
-  ## unlearnAll FUNCTION- UserStory6 ##
-  @Test_Case_ID_12
-  Scenario: unlearn all the responses
-    Given mimic.jar is running
-    When I unlearn the previous responses using the "unlearnAll" command
-    Then All previous responses are removed
-
-  @Test_Case_ID_13
-  Scenario Outline: Re-run all the request
-    Given mimic.jar is running
-    When I run the previous <request> again
-    Then Previous <response> are removed
-
-    Examples: 
-      | request  | response |
-      | "banana" | "yellow" |
-      | "volvo"  | "car"    |
-      | "green"  | "green"  |
-      |     1010 |      101 |
-      |     0000 |     0000 |
-      
-#  @Test_Case_ID_14
-#  Scenario Outline: Restart mimic and see if entries has been saved
-#    Given mimic.jar is not running
-#    When mimic.jar is launched
-#    Then <request> is returning <response>
-#
-#    Examples: 
-#      | request  | response |
-#      | "banana" | "yellow" |
-#      | "volvo"  | "car"    |
-#      | "green"  | "green"  |
