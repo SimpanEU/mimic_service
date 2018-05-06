@@ -29,6 +29,8 @@ Mimic will respond with a form for filling out the response. Mimic will auto det
 
 Trigger the same request again and Mimic will respond with your previously defined response.
 
+Mimic will learn to respond to an unknown request based on the pattern of previous request/responses.
+
 
 Use the command Relearn to specify a new response to the last request:
 
@@ -64,6 +66,10 @@ http://localhost:8080/killMimic
 
 
 Release Notes:
+
+Version 0.3:
+- Learns to respond to a request pattern.
+- Unlearn works like relearn but without learning a new response.
 
 Version 0.2:
 - Learns a sequence of responses to the same request.
