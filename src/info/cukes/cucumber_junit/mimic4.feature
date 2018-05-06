@@ -31,13 +31,14 @@ Feature: Testing mimic service sprint 4
       | "div"    | "4"    | "2"    | "2"  |
 
   @Test_Case_ID_20
-  Scenario Outline: 
+  Scenario: 
     Given mimic.jar is running
     When I ask for math operations that has not been learnt
-    Then Mimic is responding with correct answer
-
-    Examples: 
-      | "operator" | "value1" | "value2" | "sum" |
+    And I loop a series of new add calcuations
+    And I loop a series of new sub calculations
+    And I loop a series of new mult calculations
+    And I loop a series of new div calculations
+    Then Mimic is responding with correct sum in each loop
 
   @Test_Case_ID_21
   Scenario: 
