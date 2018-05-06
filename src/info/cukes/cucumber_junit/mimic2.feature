@@ -39,8 +39,8 @@ Feature: Testing mimic service sprint 2
       | "banana" | "yellow" |
       | "volvo"  | "car"    |
       | "green"  | "green"  |
-      | 1111     | 0000     |
-      | 0000     | 0000     |
+      |     1111 |     0000 |
+      |     0000 |     0000 |
 
   @Test_Case_ID_11
   Scenario: Learning and requesting videos

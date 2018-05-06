@@ -7,7 +7,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
-public class MimicStepDef {
+public class MimicStepDef123 {
 
 	private final static String host = "http://localhost:8080/";
 	private HttpServiceCaller service = new HttpServiceCaller();
