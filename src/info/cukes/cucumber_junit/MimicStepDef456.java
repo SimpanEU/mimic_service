@@ -38,36 +38,36 @@ public class MimicStepDef456 {
 		for(int i = 0;i<1000;i=i+5) {
 			int x = i/2;
 			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
-			System.out.println(i+ " + " +x+ " = "+i+x);
+			System.out.println(i+ " + " +x+ " = "+(i+x));
 			assertEquals(Integer.toString(i+x), service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x));
 		}
 	}
 	@When("^I loop a series of new sub calculations$")
 	public void i_loop_a_series_of_new_sub_calculations() throws Throwable {
-		for(int i = 0;i<1000;i=i+5) {
+		for(int i = 1000;i>1;i=i-5) {
 			int x = i/2;
-			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
-			System.out.println(i+ " + " +x+ " = "+i+x);
-			assertEquals(Integer.toString(i+x), service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x));
+			service.executeGetRequest("http://localhost:8080/sub?value1="+i+"&value2="+x);
+			System.out.println(i+ " - " +x+ " = "+(i-x));
+			assertEquals(Integer.toString(i-x), service.executeGetRequest("http://localhost:8080/sub?value1="+i+"&value2="+x));
 		}
 	}
 	@When("^I loop a series of new mult calculations$")
 	public void i_loop_a_series_of_new_mult_calculations() throws Throwable {
-		for(int i = 0;i<1000;i=i+5) {
+		for(int i = 0;i<1000;i=i+4) {
 			int x = i/2;
-			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
-			System.out.println(i+ " + " +x+ " = "+i+x);
-			assertEquals(Integer.toString(i+x), service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x));
+			service.executeGetRequest("http://localhost:8080/mult?value1="+i+"&value2="+x);
+			System.out.println(i+ " * " +x+ " = "+(i*x));
+			assertEquals(Integer.toString(i*x), service.executeGetRequest("http://localhost:8080/mult?value1="+i+"&value2="+x));
 		}
 	}
 	@When("^I loop a series of new div calculations$")
 	public void i_loop_a_series_of_new_div_calculations() throws Throwable {
-		for(int i = 0;i<1000;i=i+5) {
+		/*for(int i = 0;i<1000;i=i+5) {
 			int x = i/2;
 			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
 			System.out.println(i+ " + " +x+ " = "+i+x);
 			assertEquals(Integer.toString(i+x), service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x));
-		}
+		}*/
 	}
 	@Then("^Mimic is responding with correct sum in each loop$")
 	public void mimic_is_responding_with_correct_sum_in_each_loop() throws Throwable {
