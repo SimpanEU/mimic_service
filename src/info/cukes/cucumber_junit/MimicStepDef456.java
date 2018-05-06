@@ -72,7 +72,8 @@ public class MimicStepDef456 {
 	@Then("^Mimic is responding with correct sum in each loop$")
 	public void mimic_is_responding_with_correct_sum_in_each_loop() throws Throwable {
 	}
-
+    
+	//@Test_Case_ID_21
 	@When("^I learn a sequence of responses$")
 	public void i_learn_a_sequence_of_responses() throws Throwable {
 		System.out.println();
@@ -104,7 +105,7 @@ public class MimicStepDef456 {
 		assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state2");
 	}		
 
-
+    // @Test_Case_ID_22
 	@When("^I call for request twice on last state$")
 	public void i_call_for_request_twice_on_last_state() throws Throwable {
 		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
@@ -124,7 +125,7 @@ public class MimicStepDef456 {
 		//assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state4");
 	}
 
-
+    //@Test_Case_ID_23
 	@When("^I use resetState$")
 	public void i_use_resetState() throws Throwable {
 		System.out.println("Using resetState... " +service.executeGetRequest("http://localhost:8080/resetstate"));
@@ -135,8 +136,8 @@ public class MimicStepDef456 {
 	System.out.println("All responses should be unlearned... 'testing' now responds: " +service.executeGetRequest("http://localhost:8080/testing"));
 	}
 
+	
 	// @Test_Case_ID_24
-
 	@Given("^mimic has several learned requests and responses$")
 	public void mimic_has_several_learned_requests_and_responses() throws Throwable {
 
