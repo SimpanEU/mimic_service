@@ -44,9 +44,13 @@ Feature: Testing mimic service sprint 4
     Then Mimic is responding with correct sum in each loop
 
   @Test_Case_ID_21
-  Scenario: 
+  Scenario: Testing the unlearn function
     Given mimic.jar is running
-
+    And mimic has several learned requests and responses
+    And I am saving a new response
+    When I use "unlearn" function after the new response has been saved
+    Then response to the last request changed
+    
   @Test_Case_ID_22
   Scenario: 
     Given mimic.jar is running

@@ -75,6 +75,41 @@ public class MimicStepDef456 {
 	
 	
 	// @Test_Case_ID_21
+
+	@Given("^mimic has several learned requests and responses$")
+	public void mimic_has_several_learned_requests_and_responses() throws Throwable {
+
+
+		String response1 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state1");
+		String request1 = service.executeGetRequest("http://localhost:8080/test1");
+
+		String response2 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state2");
+		String request2 = service.executeGetRequest("http://localhost:8080/test2");
+
+		String response3 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state3");
+		String request3 = service.executeGetRequest("http://localhost:8080/test3");
+
+	}
+
+	@Given("^I am saving a new response$")
+	public void i_am_saving_a_new_response() throws Throwable {
+		String response = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state4"); 
+	}
+
+	@When("^I use \"([^\"]*)\" function after the new response has been saved$")
+	public void i_use_function_after_the_new_response_has_been_saved(String arg1) throws Throwable {
+
+		service.executeGetRequest("http://localhost:8080/unlearn");
+	}
+
+	@Then("^response to the last request changed$")
+	public void response_to_the_last_request_changed() throws Throwable {
+
+		String request = service.executeGetRequest("http://localhost:8080/test3");
+		assertEquals(request, "state4");
+	}
+
+		
 	
 	// @Test_Case_ID_22
 	
