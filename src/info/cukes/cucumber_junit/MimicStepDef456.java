@@ -35,7 +35,7 @@ public class MimicStepDef456 {
 	}
 	@When("^I loop a series of new add calcuations$")
 	public void i_loop_a_series_of_new_add_calcuations() throws Throwable {
-		for(int i = 0;i<1000;i=i+5) {
+		for(int i = 0;i<1000;i=i+51) {
 			int x = i/2;
 			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
 			System.out.println(i+ " + " +x+ " = "+(i+x));
@@ -44,7 +44,7 @@ public class MimicStepDef456 {
 	}
 	@When("^I loop a series of new sub calculations$")
 	public void i_loop_a_series_of_new_sub_calculations() throws Throwable {
-		for(int i = 1000;i>1;i=i-5) {
+		for(int i = 1000;i>1;i=i-49) {
 			int x = i/2;
 			service.executeGetRequest("http://localhost:8080/sub?value1="+i+"&value2="+x);
 			System.out.println(i+ " - " +x+ " = "+(i-x));
@@ -53,7 +53,7 @@ public class MimicStepDef456 {
 	}
 	@When("^I loop a series of new mult calculations$")
 	public void i_loop_a_series_of_new_mult_calculations() throws Throwable {
-		for(int i = 0;i<1000;i=i+4) {
+		for(int i = 0;i<1000;i=i+57) {
 			int x = i/2;
 			service.executeGetRequest("http://localhost:8080/mult?value1="+i+"&value2="+x);
 			System.out.println(i+ " * " +x+ " = "+(i*x));
@@ -62,12 +62,12 @@ public class MimicStepDef456 {
 	}
 	@When("^I loop a series of new div calculations$")
 	public void i_loop_a_series_of_new_div_calculations() throws Throwable {
-		/*for(int i = 0;i<1000;i=i+5) {
-			int x = i/2;
-			service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x);
-			System.out.println(i+ " + " +x+ " = "+i+x);
-			assertEquals(Integer.toString(i+x), service.executeGetRequest("http://localhost:8080/add?value1="+i+"&value2="+x));
-		}*/
+		for(int i = 2;i<1000;i=i+50) {
+			int x = (int) (Math.random() * (50 - 2));
+			service.executeGetRequest("http://localhost:8080/div?value1="+i+"&value2="+x);
+			System.out.println(i+ " / " +x+ " = "+(i/x));
+			assertEquals(Integer.toString(i/x), service.executeGetRequest("http://localhost:8080/div?value1="+i+"&value2="+x));
+		}
 	}
 	@Then("^Mimic is responding with correct sum in each loop$")
 	public void mimic_is_responding_with_correct_sum_in_each_loop() throws Throwable {
@@ -75,11 +75,69 @@ public class MimicStepDef456 {
 	
 	
 	// @Test_Case_ID_21
-	
 	// @Test_Case_ID_22
-	
 	// @Test_Case_ID_23
+	@When("^I learn a sequence of responses$")
+	public void i_learn_a_sequence_of_responses() throws Throwable {
+		System.out.println();
+		System.out.println("****************************************************");
+		for (int i = 1; i < 6; i++) {
+			service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state" + i);
+			service.executeGetRequest("http://localhost:8080/testing");
+		}
+		System.out.println("Request 'testing' has been given 5 responses...");
+	}
+	@When("^I use unlearn in the middle of a sequence$")
+	public void i_use_unlearn_in_the_middle_of_a_sequence() throws Throwable {
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Using resetState... " +service.executeGetRequest("http://localhost:8080/resetstate"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearn"));
+	}
+	@Then("^All previously learned responses is removed$")
+	public void all_previously_learned_responses_is_removed() throws Throwable {
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("assertEquals should match with state2... state3, state4 and state5 should have been unlearned...");
+		assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state2");
+	}
+
 	
-	// @Test_Case_ID_24
+	
+	@When("^I call for request twice on last state$")
+	public void i_call_for_request_twice_on_last_state() throws Throwable {
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+	}
+	@When("^I use unlearn$")
+	public void i_use_unlearn() throws Throwable {
+		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearn"));
+	}
+	@Then("^I unlearn the last response$")
+	public void i_unlearn_the_last_response() throws Throwable {
+		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+		//assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state4");
+	}
+
+	
+	@When("^I use resetState$")
+	public void i_use_resetState() throws Throwable {
+		System.out.println("Using resetState... " +service.executeGetRequest("http://localhost:8080/resetstate"));
+	}
+
+	@Then("^All responses for that request is unlearned$")
+	public void all_responses_for_that_request_is_unlearned() throws Throwable {;
+	System.out.println("All responses should be unlearned... 'testing' now responds: " +service.executeGetRequest("http://localhost:8080/testing"));
+	}
 	
 }

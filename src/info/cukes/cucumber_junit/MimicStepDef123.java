@@ -314,7 +314,7 @@ public class MimicStepDef123 {
 	@Then("^Request \"([^\"]*)\" returns correct state response$")
 	public void request_returns_correct_state_response(String arg1) throws Throwable {
 		String response = service.executeGetRequest("http://localhost:8080/test");
-		 assertEquals(response, "");
+		assertEquals(response, "");
 	}
 
 }
