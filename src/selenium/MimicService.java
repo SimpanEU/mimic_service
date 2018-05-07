@@ -46,7 +46,6 @@ public class MimicService {
 		webDriver.get("localhost:8080/request");
 		webDriver.get("localhost:8080/request");
 		webDriver.get("localhost:8080/request");
-		webDriver.get("localhost:8080/request");
 		
 		try {
 			Thread.sleep(2000);
