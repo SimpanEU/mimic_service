@@ -41,12 +41,12 @@ Feature: Testing mimic service sprint 4
     Then Mimic is responding with correct sum in each loop
     
   @Test_Case_ID_21
-  Scenario:
+  Scenario: 
     Given mimic.jar is running
     When I learn a sequence of responses
     And I use unlearn in the middle of a sequence
     Then All previously learned responses is removed
-    
+
   @Test_Case_ID_22
   Scenario: 
     Given mimic.jar is running
@@ -62,12 +62,3 @@ Feature: Testing mimic service sprint 4
     And I use resetState
     And I use unlearn
     Then All responses for that request is unlearned
-    
-  @Test_Case_ID_24
-  Scenario: Testing the unlearn function 
-    Given mimic.jar is running
-    And mimic has several learned requests and responses
-    And I am saving a new response
-    When I use "unlearn" function after the new response has been saved
-    Then response to the last request changed
-    
