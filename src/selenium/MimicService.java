@@ -10,16 +10,18 @@ public class MimicService {
 	private WebDriver webDriver;
 	
 	public void mimicservice() {
+	
 		System.setProperty("webdriver.chrome.driver", "bin/chromedriver");		
 		webDriver = new ChromeDriver();
 		webDriver.get("localhost:8080/unlearnAll");
 		webDriver.get("localhost:8080/request");
+		
 		WebElement element = webDriver.findElement(By.xpath("//textarea[@name='text']"));
 		element.sendKeys("res1");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 		WebElement element2 = webDriver.findElement(By.id("learn"));
@@ -27,14 +29,14 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		webDriver.get("localhost:8080/LearnNextResponse?text=res2");
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -42,7 +44,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -50,7 +52,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -58,7 +60,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+		
 			e1.printStackTrace();
 		}
 
@@ -74,7 +76,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e1) {
-			// TODO Auto-generated catch block
+			
 			e1.printStackTrace();
 		}
 
@@ -91,7 +93,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -101,7 +103,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -110,7 +112,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -135,7 +137,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
@@ -143,7 +145,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
@@ -151,7 +153,7 @@ public class MimicService {
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 
