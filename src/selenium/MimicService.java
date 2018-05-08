@@ -12,9 +12,16 @@ public class MimicService {
 	public void mimicservice() {
 		System.setProperty("webdriver.chrome.driver", "bin/chromedriver");		
 		webDriver = new ChromeDriver();
+		webDriver.get("localhost:8080/unlearnAll");
 		webDriver.get("localhost:8080/request");
 		WebElement element = webDriver.findElement(By.xpath("//textarea[@name='text']"));
 		element.sendKeys("res1");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		WebElement element2 = webDriver.findElement(By.id("learn"));
 		element2.click();
 		try {
@@ -24,12 +31,61 @@ public class MimicService {
 			e.printStackTrace();
 		}
 		webDriver.get("localhost:8080/LearnNextResponse?text=res2");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/request");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/LearnNextResponse?text=res3");
-		webDriver.get("localhost:8080/resquest");
-		webDriver.get("localhost:8080/LearnNextResponse?text=test4");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/request");
-		webDriver.get("localhost:8080/LearnNextResponse?text=test5");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		webDriver.get("localhost:8080/LearnNextResponse?text=res4");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		webDriver.get("localhost:8080/request");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+
+		webDriver.get("localhost:8080/LearnNextResponse?text=res5");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/request");
 		
 		try {
@@ -38,16 +94,44 @@ public class MimicService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+
 		webDriver.get("localhost:8080/request");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/request");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		webDriver.get("localhost:8080/request");
+		
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		webDriver.get("localhost:8080/unlearn");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		webDriver.get("localhost:8080/resetState");
-		webDriver.get("localhost:8080/request");
-		webDriver.get("localhost:8080/request");
-		webDriver.get("localhost:8080/request");
-		webDriver.get("localhost:8080/request");
-		
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
@@ -55,6 +139,22 @@ public class MimicService {
 			e.printStackTrace();
 		}
 		
+		webDriver.get("localhost:8080/request");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		webDriver.get("localhost:8080/request");
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 		
 	}
 	
