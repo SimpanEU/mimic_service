@@ -4,29 +4,17 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-import selenium.HttpServiceCaller;
-
 public class MimicServiceTest {
 	
+	private MimicService mimic = new MimicService();
+	private HttpServiceCaller service = new HttpServiceCaller();
 	
 	@Test
 	public void test() {
-		MimicService mimictest = new MimicService();
-		mimictest.mimicservice();
-	
-
-		HttpServiceCaller service = new HttpServiceCaller();
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			
-			e.printStackTrace();
-		}
-		
+		mimic.mimicservice();
+		mimic.sleep(500);
 		assertEquals(service.executeGetRequest("http://localhost:8080/request"), "res2");
-		
-		
-		
+		mimic.quit();
 	}
-	
+
 }
