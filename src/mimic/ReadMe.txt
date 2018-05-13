@@ -32,40 +32,59 @@ Trigger the same request again and Mimic will respond with your previously defin
 Mimic will learn to respond to an unknown request based on the pattern of previous request/responses.
 
 
-Use the command Relearn to specify a new response to the last request:
+Use the command RelearnResponse to change a response to the last request:
 
-http://localhost:8080/relearn
+http://localhost:8080/RelearnResponse
+
+Use the command AddResponse to add a new response (and still remember the sequence of previous responses)
+to the last request:
+
+http://localhost:8080/AddResponse
 
 
-Unlearn the previous request/response using the "unlearn" command:
+Unlearn the previous response using the UnlearnResponse command:
 
-http://localhost:8080/unlearn
+http://localhost:8080/UnlearnResponse
 
-or unlearn all requests using:
+or unlearn all responses using:
 
-http://localhost:8080/unlearnAll
+http://localhost:8080/UnlearnAllResponses
 
 
 Define a response before triggering a request to prevent the form from appearing:
 
-http://localhost:8080/learnNextResponse?text=Hello
+http://localhost:8080/LearnNextResponse?text=Hello
 
 or by specifying the mime type:
 
-http://localhost:8080/learnNextResponse?text=<value>1</value>&mime=application/xml
+http://localhost:8080/LearnNextResponse?text=<value>1</value>&mime=application/xml
 
 
-Reset the simulated application state (to repeat a sequence again) using:
+Reset the simulated application state (to repeat all sequences again) using:
 
-http://localhost:8080/resetState
+http://localhost:8080/ResetState
+
+
+View all requests using the ViewRequests command:
+
+http://localhost:8080/ViewRequests
 
 
 Close Mimic and save the learned responses by using the command:
 
-http://localhost:8080/killMimic
+http://localhost:8080/KillMimic
 
 
 Release Notes:
+
+Version 0.4:
+- Fix problem when trying to unlearn a repeated request.
+- Change relearn into RelearnResponse and add AddResponse.
+- Change unlearn to UnlearnResponse and unlearnAll to UnlearnAllResponses.
+- Correct problem when not specifying a value, for example /test?param.
+- Handle responses that begins or ends with the same characters.
+- Learns complex responses faster.
+- View all responses that Mimic have learned.
 
 Version 0.3:
 - Learns to respond to a request pattern.
