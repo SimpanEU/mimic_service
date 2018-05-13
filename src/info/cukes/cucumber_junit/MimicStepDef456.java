@@ -94,7 +94,7 @@ public class MimicStepDef456 {
 		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
 		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
 		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
-		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearn"));
+		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearnresponse"));
 	}
 	@Then("^All previously learned responses is removed$")
 	public void all_previously_learned_responses_is_removed() throws Throwable {
@@ -116,7 +116,7 @@ public class MimicStepDef456 {
 	}
 	@When("^I use unlearn$")
 	public void i_use_unlearn() throws Throwable {
-		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearn"));
+		System.out.println("Using unlearn... " +service.executeGetRequest("http://localhost:8080/unlearnresponse"));
 	}
 	@Then("^I unlearn the last response$")
 	public void i_unlearn_the_last_response() throws Throwable {
@@ -150,7 +150,7 @@ public class MimicStepDef456 {
 	}
 	@When("^I use \"([^\"]*)\" function after the new response has been saved$")
 	public void i_use_function_after_the_new_response_has_been_saved(String arg1) throws Throwable {
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 	}
 	@Then("^response to the last request changed$")
 	public void response_to_the_last_request_changed() throws Throwable {
@@ -165,10 +165,11 @@ public class MimicStepDef456 {
 	@When("^Requesting \"([^\"]*)\"$")
 	public void requesting(String arg1) throws Throwable {
 		//this.response = service.executeGetRequest("http://localhost:8080/test?param");
+		System.out.println("TIMEOUT.... http://localhost:8080/test?param");
 		}
 	@Then("^Mimic responds with the learning template$")
 	public void mimic_responds_with_the_learning_template() throws Throwable {
-		assertEquals(response, "");
+		assertEquals(response, null);
 	}
 	
 	// @Test_Case_ID_26

@@ -27,10 +27,15 @@ public class MimicStepDef123 {
 
 	@When("^I learn a response$")
 	public void i_learn_a_response() throws Throwable {
+		service.executeGetRequest("http://localhost:8080/UnlearnAllResponses");
 		String request = host + "LearnNextResponse?text=fruit";
 		String response = service.executeGetRequest(request);
 	}
-
+	@When("^I learn a responze$")
+	public void i_learn_a_responze() throws Throwable {
+		String request = host + "LearnNextResponse?text=fruit";
+		String response = service.executeGetRequest(request);
+	}
 	@When("^I learn a request$")
 	public void i_learn_a_request() throws Throwable {
 		String request = host + "apple";
@@ -46,10 +51,10 @@ public class MimicStepDef123 {
 
 	@When("^I unlearn the previous request/response using the \"([^\"]*)\" command$")
 	public void i_unlearn_the_previous_request_response_using_the_command(String arg1) throws Throwable {
-		service.executeGetRequest("http://localhost:8080/unlearnall");
+		service.executeGetRequest("http://localhost:8080/unlearnallresponses");
 		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=fruit");
 		service.executeGetRequest("http://localhost:8080/apple");
-		String request = host + "unlearn";
+		String request = host + "unlearnresponse";
 		String response = service.executeGetRequest(request);
 		assertEquals(response, "OK");
 	}
@@ -80,7 +85,7 @@ public class MimicStepDef123 {
 	@When("^I learn a new response$")
 	public void i_learn_a_new_response() throws Throwable {
 		service.executeGetRequest(host + "apple");
-		service.executeGetRequest(host + "relearn");
+		service.executeGetRequest(host + "RelearnResponse");
 		String request = host + "LearnNextResponse?text=fruity";
 		String response = service.executeGetRequest(request);
 	}
@@ -147,7 +152,7 @@ public class MimicStepDef123 {
 
 	@When("^I unlearn the previous responses using the \"([^\"]*)\" command$")
 	public void i_unlearn_the_previous_responses_using_the_command(String arg1) throws Throwable {
-		String request = host + "unlearnAll";
+		String request = host + "unlearnAllresponses";
 		String response = service.executeGetRequest(request);
 		assertEquals(response, "OK");
 	}
@@ -236,7 +241,7 @@ public class MimicStepDef123 {
 
 	@Given("^unlearnAll is called$")
 	public void unlearnall_is_called() throws Throwable {
-		service.executeGetRequest("http://localhost:8080/unlearnAll");
+		service.executeGetRequest("http://localhost:8080/unlearnAllresponses");
 	}
 
 	@When("^Request \"([^\"]*)\" has \"([^\"]*)\" learned responses$")
@@ -262,7 +267,7 @@ public class MimicStepDef123 {
 		System.out.println("Current state of test is: " + service.executeGetRequest("http://localhost:8080/test"));
 		System.out.println("************************************");
 		for (int i = 1; i < 4; i++) {
-			service.executeGetRequest("http://localhost:8080/unlearn");
+			service.executeGetRequest("http://localhost:8080/unlearnresponse");
 			System.out.println("Using unlearn method once gives test response: "
 					+ service.executeGetRequest("http://localhost:8080/test"));
 		}
@@ -270,34 +275,34 @@ public class MimicStepDef123 {
 		System.out.println("************************************");
 		System.out.println("Current state of test is: " + service.executeGetRequest("http://localhost:8080/test"));
 		System.out.println("************************************");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println("Using unlearn 2 times in a row now returns response: "
 				+ service.executeGetRequest("http://localhost:8080/test"));
 		// assertEquals(service.executeGetRequest("http://localhost:8080/test"),
 		// "state10");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println("Using unlearn 3 times in a row now returns response: "
 				+ service.executeGetRequest("http://localhost:8080/test"));
 		// assertEquals(service.executeGetRequest("http://localhost:8080/test"),
 		// "state7");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println("Using unlearn 4 times in a row now returns response: "
 				+ service.executeGetRequest("http://localhost:8080/test"));
 		// assertEquals(service.executeGetRequest("http://localhost:8080/test"),
 		// "state3");
-		service.executeGetRequest("http://localhost:8080/unlearn");
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println("Using unlearn 2 times in a row now returns response: "
 				+ service.executeGetRequest("http://localhost:8080/test"));
 		// assertEquals(service.executeGetRequest("http://localhost:8080/test"),
 		// "state1");
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println(
 				"Using unlearn once now returns response: " + service.executeGetRequest("http://localhost:8080/test"));
 		System.out.println("************************************");
@@ -306,7 +311,7 @@ public class MimicStepDef123 {
 		for (int i = 1; i < 16; i++) {
 			System.out.println("test now returns response: " + service.executeGetRequest("http://localhost:8080/test"));
 		}
-		service.executeGetRequest("http://localhost:8080/unlearn");
+		service.executeGetRequest("http://localhost:8080/unlearnresponse");
 		System.out.println(
 				"Using unlearn once now returns response: " + service.executeGetRequest("http://localhost:8080/test"));
 	}
@@ -314,7 +319,7 @@ public class MimicStepDef123 {
 	@Then("^Request \"([^\"]*)\" returns correct state response$")
 	public void request_returns_correct_state_response(String arg1) throws Throwable {
 		String response = service.executeGetRequest("http://localhost:8080/test");
-		assertEquals(response, "");
+		assertEquals(response, "state6");
 	}
 
 }

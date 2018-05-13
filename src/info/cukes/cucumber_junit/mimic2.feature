@@ -22,7 +22,7 @@ Feature: Testing mimic service sprint 2
   @Test_Case_ID_9
   Scenario: Correct an incorrect response
     Given mimic.jar is running
-    When I learn a response
+    When I learn a responze
     And I learn a request
     And I learn a new response
     And I learn a request
