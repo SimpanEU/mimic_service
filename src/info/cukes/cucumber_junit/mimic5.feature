@@ -9,28 +9,18 @@ Feature: Testing mimic service sprint 5
   @Test_Case_ID_26
   Scenario: View all learned responses
     Given mimic.jar is running
+    And I have several learned requests
     When I ask for list of learned responses
     Then Mimic returns list of learned responses
 
   @Test_Case_ID_27
-  Scenario: x
+  Scenario: Use examples that begins or ends with the same characters
     Given mimic.jar is running
-    When x
-    Then x
-
+  #   When x
+  #   Then x
+  
   @Test_Case_ID_28
-  Scenario: x
+  Scenario: Learn mock complex response faster (xml/json)
     Given mimic.jar is running
-    When x
-    Then x
-
-  @Test_Case_ID_29
-  Scenario Outline: x
-    Given mimic.jar is running
-    When x
-    Then x
-
-    Examples: 
-      | name  | value | status  |
-      | name1 |     5 | success |
-      | name2 |     7 | Fail    |
+ #   When x
+ #   Then x

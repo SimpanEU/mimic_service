@@ -1,7 +1,6 @@
 package info.cukes.cucumber_junit;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -173,11 +172,28 @@ public class MimicStepDef456 {
 	}
 	
 	// @Test_Case_ID_26
+	@Given("^I have several learned requests$")
+	public void i_have_several_learned_requests() throws Throwable {
+		for (int i = 1; i < 6; i++) {
+			service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state" + i);
+			service.executeGetRequest("http://localhost:8080/qwe");
+			service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state" + i);
+			service.executeGetRequest("http://localhost:8080/rty");
+			service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state" + i);
+			service.executeGetRequest("http://localhost:8080/lastrequest");
+		}
+	}
 	@When("^I ask for list of learned responses$")
 	public void i_ask_for_list_of_learned_responses() throws Throwable {
+		this.response = (service.executeGetRequest("http://localhost:8080/ViewRequests"));
 	}
 	@Then("^Mimic returns list of learned responses$")
 	public void mimic_returns_list_of_learned_responses() throws Throwable {
+		String s = this.response;
+		if (this.response.endsWith("GET /lastrequest HTTP/1.1</html>")) {
+			s = "OK";
+		}
+		assertEquals(s, "OK");
 	}
 	
 	// @Test_Case_ID_27
