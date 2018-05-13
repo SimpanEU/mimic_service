@@ -7,10 +7,10 @@ Feature: Testing mimic service sprint 5
     Then Mimic responds with the learning template
 
   @Test_Case_ID_26
-  Scenario: Title of your scenario
+  Scenario: View all learned responses
     Given mimic.jar is running
-    When I complete action
-    Then I validate the outcomes
+    When I ask for list of learned responses
+    Then Mimic returns list of learned responses
 
   @Test_Case_ID_27
   Scenario: Title of your scenario

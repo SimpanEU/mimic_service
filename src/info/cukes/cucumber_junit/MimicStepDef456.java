@@ -121,7 +121,7 @@ public class MimicStepDef456 {
 	@Then("^I unlearn the last response$")
 	public void i_unlearn_the_last_response() throws Throwable {
 		System.out.println("Calling for request 'testing' responds: " +service.executeGetRequest("http://localhost:8080/testing"));
-		//assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state4");
+		assertEquals(service.executeGetRequest("http://localhost:8080/testing"), "state4");
 	}
 
     //@Test_Case_ID_23
@@ -137,17 +137,12 @@ public class MimicStepDef456 {
 	// @Test_Case_ID_24
 	@Given("^mimic has several learned requests and responses$")
 	public void mimic_has_several_learned_requests_and_responses() throws Throwable {
-
-
 		String response1 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state1");
 		String request1 = service.executeGetRequest("http://localhost:8080/test1");
-
 		String response2 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state2");
 		String request2 = service.executeGetRequest("http://localhost:8080/test2");
-
 		String response3 = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state3");
 		String request3 = service.executeGetRequest("http://localhost:8080/test3");
-
 	}
 	@Given("^I am saving a new response$")
 	public void i_am_saving_a_new_response() throws Throwable {
@@ -159,19 +154,34 @@ public class MimicStepDef456 {
 	}
 	@Then("^response to the last request changed$")
 	public void response_to_the_last_request_changed() throws Throwable {
-
 		String request = service.executeGetRequest("http://localhost:8080/test3");
 		assertEquals(request, "state4");
 	}
 	
+	
+	
+	
 	// @Test_Case_ID_25
 	@When("^Requesting \"([^\"]*)\"$")
 	public void requesting(String arg1) throws Throwable {
-		this.response = service.executeGetRequest("http://localhost:8080/test?param");
-	}
+		//this.response = service.executeGetRequest("http://localhost:8080/test?param");
+		}
 	@Then("^Mimic responds with the learning template$")
 	public void mimic_responds_with_the_learning_template() throws Throwable {
 		assertEquals(response, "");
 	}
+	
+	// @Test_Case_ID_26
+	@When("^I ask for list of learned responses$")
+	public void i_ask_for_list_of_learned_responses() throws Throwable {
+	}
+	@Then("^Mimic returns list of learned responses$")
+	public void mimic_returns_list_of_learned_responses() throws Throwable {
+	}
+	
+	// @Test_Case_ID_27
+	
+	// @Test_Case_ID_28
+	
 
 }
