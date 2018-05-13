@@ -11,6 +11,7 @@ public class MimicStepDef456 {
 
 	private final static String host = "http://localhost:8080/";
 	private HttpServiceCaller service = new HttpServiceCaller();
+	private String response;
 
 	// @Test_Case_ID_19
 	@When("^I learn basic math operations$")
@@ -164,6 +165,13 @@ public class MimicStepDef456 {
 	}
 	
 	// @Test_Case_ID_25
-	
+	@When("^Requesting \"([^\"]*)\"$")
+	public void requesting(String arg1) throws Throwable {
+		this.response = service.executeGetRequest("http://localhost:8080/test?param");
+	}
+	@Then("^Mimic responds with the learning template$")
+	public void mimic_responds_with_the_learning_template() throws Throwable {
+		assertEquals(response, "");
+	}
 
 }
