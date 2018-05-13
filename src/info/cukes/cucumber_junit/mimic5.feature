@@ -1,10 +1,10 @@
 Feature: Testing mimic service sprint 5
 
   @Test_Case_ID_25
-  Scenario: Title of your scenario
+  Scenario: Trying to learn without specifying a value
     Given mimic.jar is running
-    When I complete action
-    Then I validate the outcomes
+    When Requesting "localhost:8080/test?param"
+    Then Mimic responds with the learning template
 
   @Test_Case_ID_26
   Scenario: Title of your scenario

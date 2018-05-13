@@ -12,7 +12,6 @@ public class MimicStepDef456 {
 	private final static String host = "http://localhost:8080/";
 	private HttpServiceCaller service = new HttpServiceCaller();
 
-	
 	// @Test_Case_ID_19
 	@When("^I learn basic math operations$")
 	public void i_learn_basic_math_operations() throws Throwable {
@@ -27,8 +26,7 @@ public class MimicStepDef456 {
 	@Then("^Mimic learns to calculate the anwers itself$")
 	public void mimic_learns_to_calculate_the_anwers_itself() throws Throwable {
 	}
-
-
+	
 	// @Test_Case_ID_20
 	@When("^I ask for math operations that has not been learnt$")
 	public void i_ask_for_math_operations_that_has_not_been_learnt() throws Throwable {
@@ -130,13 +128,11 @@ public class MimicStepDef456 {
 	public void i_use_resetState() throws Throwable {
 		System.out.println("Using resetState... " +service.executeGetRequest("http://localhost:8080/resetstate"));
 	}
-
 	@Then("^All responses for that request is unlearned$")
 	public void all_responses_for_that_request_is_unlearned() throws Throwable {;
 	System.out.println("All responses should be unlearned... 'testing' now responds: " +service.executeGetRequest("http://localhost:8080/testing"));
 	}
 
-	
 	// @Test_Case_ID_24
 	@Given("^mimic has several learned requests and responses$")
 	public void mimic_has_several_learned_requests_and_responses() throws Throwable {
@@ -152,23 +148,22 @@ public class MimicStepDef456 {
 		String request3 = service.executeGetRequest("http://localhost:8080/test3");
 
 	}
-
 	@Given("^I am saving a new response$")
 	public void i_am_saving_a_new_response() throws Throwable {
 		String response = service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=state4"); 
 	}
-
 	@When("^I use \"([^\"]*)\" function after the new response has been saved$")
 	public void i_use_function_after_the_new_response_has_been_saved(String arg1) throws Throwable {
-
 		service.executeGetRequest("http://localhost:8080/unlearn");
 	}
-
 	@Then("^response to the last request changed$")
 	public void response_to_the_last_request_changed() throws Throwable {
 
 		String request = service.executeGetRequest("http://localhost:8080/test3");
 		assertEquals(request, "state4");
 	}
+	
+	// @Test_Case_ID_25
+	
 
 }
