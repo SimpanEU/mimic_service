@@ -13,16 +13,22 @@ Feature: Testing mimic service sprint 5
     Then Mimic returns list of learned responses
 
   @Test_Case_ID_27
-  Scenario: Title of your scenario
+  Scenario: x
     Given mimic.jar is running
-    When I complete action
-    Then I validate the outcomes
+    When x
+    Then x
 
   @Test_Case_ID_28
-  Scenario Outline: Title of your scenario outline
+  Scenario: x
     Given mimic.jar is running
-    When I check for the <value> in step
-    Then I verify the <status> in step
+    When x
+    Then x
+
+  @Test_Case_ID_29
+  Scenario Outline: x
+    Given mimic.jar is running
+    When x
+    Then x
 
     Examples: 
       | name  | value | status  |
