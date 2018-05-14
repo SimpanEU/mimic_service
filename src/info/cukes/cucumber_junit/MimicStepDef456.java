@@ -199,6 +199,31 @@ public class MimicStepDef456 {
 	// @Test_Case_ID_27
 	
 	// @Test_Case_ID_28
-	
+	@When("^I learn complex operations \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\"$")
+	public void i_learn_complex_operations(String arg1, String arg2, String arg3, String arg4, String arg5) throws Throwable {
+		/*service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=	 \r\n" + 
+				"	Testing complex answers\r\n" + 
+				"\r\n" + 
+				"	Number1 = "+arg1+"\r\n" + 
+				"	Number2 = "+arg2+"\r\n" + 
+				"\r\n" + 
+				"	Results\r\n" + 
+				"\r\n" + 
+				"	Add = "+arg3+"\r\n" + 
+				"	Sub = "+arg4+"\r\n" + 
+				"	Mult = "+arg5);*/ 
+		service.executeGetRequest("http://localhost:8080/LearnNextResponse?text=Testing complex answers. Number1 = "+arg1+" Number2 = "+arg2+" Results: Add = "+arg3+" Sub = "+arg4+" Mult = "+arg5+"&mime=application/xml");
+		service.executeGetRequest("http://localhost:8080/ai?number1="+arg1+"&number2="+arg2);
+	}
+	@Then("^Mimic has learned the complex answers$")
+	public void mimic_has_learned_the_complex_answers() throws Throwable {
+	}
+	@When("^I ask for complex operations$")
+	public void i_ask_for_complex_operations() throws Throwable {
+	}
 
+	@Then("^Mimic is responding with correct answers$")
+	public void mimic_is_responding_with_correct_answers() throws Throwable {
+		System.out.println(service.executeGetRequest("http://localhost:8080/ai?number1=20&number2=15"));
+	}
 }
