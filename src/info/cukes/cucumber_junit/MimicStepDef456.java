@@ -221,7 +221,6 @@ public class MimicStepDef456 {
 	@When("^I ask for complex operations$")
 	public void i_ask_for_complex_operations() throws Throwable {
 	}
-
 	@Then("^Mimic is responding with correct answers$")
 	public void mimic_is_responding_with_correct_answers() throws Throwable {
 		System.out.println(service.executeGetRequest("http://localhost:8080/ai?number1=20&number2=15"));
