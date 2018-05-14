@@ -17,7 +17,7 @@ public class MimicService {
 	}
 	
 	public void mimicservice() {
-		webDriver.get("localhost:8080/unlearnAll");
+		webDriver.get("http://localhost:8080/UnlearnAllResponses");
 		webDriver.get("localhost:8080/request");
 		webDriver.findElement(By.xpath("//textarea[@name='text']")).sendKeys("res1");
 		sleep(500);
@@ -45,7 +45,7 @@ public class MimicService {
 		sleep(500);
 		webDriver.get("localhost:8080/request");
 		sleep(500);
-		webDriver.get("localhost:8080/unlearn");
+		webDriver.get("http://localhost:8080/UnlearnResponse");
 		sleep(500);
 		webDriver.get("localhost:8080/resetState");
 		sleep(500);
