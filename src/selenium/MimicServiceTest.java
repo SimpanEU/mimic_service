@@ -11,7 +11,7 @@ public class MimicServiceTest {
 	private HttpServiceCaller service = new HttpServiceCaller();
 	
 	@Test
-	public void test() {
+	public void test1() {
 		mimic.mimicservice();
 		mimic.sleep(500);
 		assertEquals(service.executeGetRequest("http://localhost:8080/request"), "res1");
@@ -31,11 +31,9 @@ public class MimicServiceTest {
 		assertNotEquals(service.executeGetRequest("http://localhost:8080/request"), "res4");
 		assertNotEquals(service.executeGetRequest("http://localhost:8080/request"), "res5");
 		mimic.sleep(1000);
-		
+	    
 		mimic.quit();
 	}
-
-	
 }
 	
 	
