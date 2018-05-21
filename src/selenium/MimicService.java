@@ -11,9 +11,16 @@ public class MimicService {
 	public WebDriver webDriver;
 
 	public MimicService() {
-		System.setProperty("webdriver.chrome.driver", "bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver", "bin/chromedriver.exe");	
 		webDriver = new ChromeDriver();
 		webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	private void getRequestAndSleep() {
+
+		String request = "localhost:8080/request";
+		webDriver.get(request);
+		sleep(500);	
 	}
 
 	public void mimicservice() {
@@ -25,85 +32,26 @@ public class MimicService {
 		sleep(500);
 		webDriver.get("localhost:8080/LearnNextResponse?text=res2");
 		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
+		getRequestAndSleep();
 		webDriver.get("localhost:8080/LearnNextResponse?text=res3");
 		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
+		getRequestAndSleep();
 		webDriver.get("localhost:8080/LearnNextResponse?text=res4");
 		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
+		getRequestAndSleep();
 		webDriver.get("localhost:8080/LearnNextResponse?text=res5");
 		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
+
+		for(int i = 0; i<4; i++) {
+
+			getRequestAndSleep();	
+		}
+
 		webDriver.get("http://localhost:8080/UnlearnResponse");
 		sleep(500);
 		webDriver.get("localhost:8080/resetState");
 		sleep(500);
 
-	}
-//sprint 5 Test ID 30
-	public void mimicservice2() {
-		
-	
-		webDriver.get("http://localhost:8080/UnlearnAllResponses");
-		webDriver.get("localhost:8080/request");
-		webDriver.findElement(By.xpath("//textarea[@name='text']")).sendKeys("res1");
-		sleep(500);
-		webDriver.findElement(By.id("learn")).click();
-		sleep(500);
-		webDriver.get("localhost:8080/LearnNextResponse?text=res2");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/LearnNextResponse?text=res3");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/LearnNextResponse?text=res4");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/LearnNextResponse?text=res5");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/resetState");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/relearnResponse");
-		sleep(500);
-		webDriver.findElement(By.xpath("//textarea[@name='text']")).sendKeys("newresponse1");
-		sleep(500);
-		webDriver.findElement(By.id("learn")).click();
-		sleep(500);		
-		webDriver.get("localhost:8080/resetState");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/request");
-		sleep(500);
-		webDriver.get("localhost:8080/AddResponse");
-		sleep(500);
-		webDriver.findElement(By.xpath("//textarea[@name='text']")).sendKeys("newresponse2");
-		sleep(500);
-		webDriver.findElement(By.id("learn")).click();
-		sleep(500);
-		webDriver.get("localhost:8080/resetState");
-		sleep(500);
-				
 	}
 
 	public void sleep(int i) {
