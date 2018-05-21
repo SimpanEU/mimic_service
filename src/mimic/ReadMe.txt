@@ -77,6 +77,14 @@ http://localhost:8080/KillMimic
 
 Release Notes:
 
+Version 0.5:
+- Fixed problem with blank responses.
+- Corrected problem when not specifying a value.
+- Fixed problem learning a longer path.
+- More informative responses than just OK.
+- Click on link in ViewRequests list to view response.
+- Specify the mime type in a drop-down instead of auto detecting.
+
 Version 0.4:
 - Fix problem when trying to unlearn a repeated request.
 - Change relearn into RelearnResponse and add AddResponse.
