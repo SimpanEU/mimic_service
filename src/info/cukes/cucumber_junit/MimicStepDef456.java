@@ -163,12 +163,15 @@ public class MimicStepDef456 {
 	// @Test_Case_ID_25
 	@When("^Requesting \"([^\"]*)\"$")
 	public void requesting(String arg1) throws Throwable {
-		//this.response = service.executeGetRequest("http://localhost:8080/test?param");
-		System.out.println("TIMEOUT.... http://localhost:8080/test?param");
+		this.response = service.executeGetRequest("http://localhost:8080/test?param");
 		}
 	@Then("^Mimic responds with the learning template$")
 	public void mimic_responds_with_the_learning_template() throws Throwable {
-		assertEquals(response, null);
+		String test = "isLearning";
+		if(response.contains("Paste or type json")){
+			this.response = "isLearning";
+		}
+		assertEquals(response, test);
 	}
 	
 	// @Test_Case_ID_26
@@ -190,7 +193,7 @@ public class MimicStepDef456 {
 	@Then("^Mimic returns list of learned responses$")
 	public void mimic_returns_list_of_learned_responses() throws Throwable {
 		String s = this.response;
-		if (this.response.endsWith("GET /lastrequest HTTP/1.1</html>")) {
+		if (this.response.endsWith("/lastrequest</a></html>")) {
 			s = "OK";
 		}
 		assertEquals(s, "OK");
@@ -225,4 +228,33 @@ public class MimicStepDef456 {
 	public void mimic_is_responding_with_correct_answers() throws Throwable {
 		System.out.println(service.executeGetRequest("http://localhost:8080/ai?number1=20&number2=15"));
 	}
+	
+	
+	
+	
+	
+	
+	//mimic6.feature
+	@When("^I try different commands$")
+	public void i_try_different_commands() throws Throwable {
+	}
+
+	@Then("^Mimic responds more informative responses$")
+	public void mimic_responds_more_informative_responses() throws Throwable {
+		System.out.println();
+		System.out.println("***");
+		System.out.println("resetState returns: " + service.executeGetRequest("http://localhost:8080/resetState"));
+		System.out.println("UnlearnResponse returns: " + service.executeGetRequest("http://localhost:8080/unlearnresponse"));
+		System.out.println("UnlearnAllResponses returns: " + service.executeGetRequest("http://localhost:8080/unlearnallresponses"));
+		System.out.println("AddResponse returns: " + service.executeGetRequest("http://localhost:8080/addresponse"));
+		System.out.println("RelearnResponse returns: " + service.executeGetRequest("http://localhost:8080/relearnresponse"));
+		System.out.println("KillMimic returns: " + service.executeGetRequest("http://localhost:8080/KillMimic"));
+		System.out.println("***");
+		System.out.println();
+		String user = System.getProperty("user.name");
+		String cmd = "java -jar C://Users//" + user + "//eclipse-workspace//cucumber-junit//mimic.jar";
+		Runtime.getRuntime().exec(cmd);
+
+	}
+	
 }
