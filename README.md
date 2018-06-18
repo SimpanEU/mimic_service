@@ -1,8 +1,3 @@
-# Learn to respond to a request
-learnResponse(String request, String response)
+# See Product Manual
 
-# Return the response to a request
-getResponse(String request)
-
-# Forget all learned responses
-unlearnAll()
+This is a project for testing www.mimicservice.com using cucumber and junit.
